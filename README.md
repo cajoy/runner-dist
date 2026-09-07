@@ -1,12 +1,12 @@
 # Runner distribution
 
-Published binaries for [Runner](https://github.com/cajoy/runner). This
+Published binaries for [Runner](https://github.com/hap-team/runner). This
 repository holds no source — only releases, their checksums, and the installer.
 
 ## Install
 
 ```bash
-curl -fsSL https://github.com/cajoy/runner-dist/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/hap-team/runner-dist/main/install.sh | sh
 runner version
 ```
 
@@ -40,5 +40,5 @@ machine downloads exactly what that lock names and verifies each byte against
 it, so a project's toolchain is reproducible and does not depend on what
 happens to be installed.
 
-See [cajoy/runner-demo](https://github.com/cajoy/runner-demo) for a worked
+See [hap-team/runner-demo](https://github.com/hap-team/runner-demo) for a worked
 example.
