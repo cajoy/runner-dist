@@ -2,7 +2,7 @@
 
 # Install Runner from its public distribution repository.
 #
-#   curl -fsSL https://raw.githubusercontent.com/hap-team/runner-dist/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/cajoy/runner-dist/main/install.sh | sh
 #
 # Runner's source is private; this installs a published, checksummed binary.
 # Pass a version to pin one:  ... | sh -s -- v0.8.12
@@ -10,7 +10,7 @@
 
 set -eu
 
-repository=${RUNNER_DIST_REPOSITORY:-hap-team/runner-dist}
+repository=${RUNNER_DIST_REPOSITORY:-cajoy/runner-dist}
 install_dir=${RUNNER_INSTALL_DIR:-$HOME/.local/bin}
 version=""
 with_mcp=0
