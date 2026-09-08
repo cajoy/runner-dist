@@ -20,6 +20,10 @@ curl -fsSL .../install.sh | sh -s -- --with-mcp
 The installer verifies the binary against the release's `checksums.txt` before
 installing it to `~/.local/bin`, and refuses to install on a mismatch.
 
+It installs nothing else. A task that declares no `runtime: host` runs in a
+container, so the installer ends with a note when no engine is reachable —
+a note and not a failure, because Runner itself does not need one.
+
 ## What a release contains
 
 | | |
