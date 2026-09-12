@@ -2,7 +2,7 @@
 
 # Install Runner from its public distribution repository.
 #
-#   curl -fsSL https://raw.githubusercontent.com/hap-team/runner-dist/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/cajoy/runner-dist/main/install.sh | sh
 #
 # Runner's source is private; this installs a published, checksummed binary.
 # Pass a version to pin one:  ... | sh -s -- v0.8.12
@@ -10,7 +10,7 @@
 
 set -eu
 
-repository=${RUNNER_DIST_REPOSITORY:-hap-team/runner-dist}
+repository=${RUNNER_DIST_REPOSITORY:-cajoy/runner-dist}
 install_dir=${RUNNER_INSTALL_DIR:-$HOME/.local/bin}
 version=""
 with_mcp=0
@@ -119,3 +119,13 @@ case ":$PATH:" in
   *":$install_dir:"*) ;;
   *) echo "note: $install_dir is not on PATH" >&2 ;;
 esac
+
+# Runner needs nothing else to install, but a task that declares no `runtime:
+# host` runs in a container. Say now what would otherwise surface as
+# executor_unavailable on someone's first run.
+if command -v docker >/dev/null 2>&1; then
+  docker info >/dev/null 2>&1 ||
+    echo "note: docker is installed but its daemon is not reachable; start it before running container tasks" >&2
+elif ! command -v container >/dev/null 2>&1; then
+  echo "note: no container engine found; install Docker or Apple container, or use projects whose tasks all declare runtime: host" >&2
+fi
